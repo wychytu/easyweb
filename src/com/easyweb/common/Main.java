@@ -21,6 +21,7 @@ import com.easyweb.interact.MngTool;
 
 public class Main extends HttpServlet {
 	private static final long serialVersionUID = -8953575363658619052L;
+	//main路径 通过ServletContext获取
 	public static File path;
 	public static boolean installed = true;
 	public static Date startTime;
@@ -49,6 +50,7 @@ public class Main extends HttpServlet {
 		startTime = new Date();
 		ServletContext ctx = getServletContext();
 		path = new File(ctx.getRealPath("/"));
+		System.out.println(path);
 		installed = Install.checkInstall();
 		try {
 			if (installed) {

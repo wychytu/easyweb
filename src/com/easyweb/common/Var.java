@@ -11,15 +11,21 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
-//import org.json.JSONObject;
+import org.json.JSONObject;
+
+import com.easyweb.utils.JsonUtil;
 //
 //import com.webbuilder.utils.DbUtil;
 //import com.webbuilder.utils.FileUtil;
 //import com.webbuilder.utils.JsonUtil;
 import com.easyweb.utils.StringUtil;
-
+/*
+ * 变量分成两种，一种是在服务器的配置文件里serverVar,另一种存储在数据库中，第一次安装时数据库是不存在的，先加载服务端变量
+ */
 public class Var {
+	//server vars 静态变量可使用类名称取
 	private static ConcurrentHashMap<String, String> buffer;
+	//dbvars 静态变量可
 	private static ConcurrentHashMap<String, String> dbVarMap;
 
 //	public static ConcurrentHashMap<String, String> getVarMap()
@@ -114,13 +120,13 @@ public class Var {
 		}
 	}
 
-//	public static int getInt(String name) throws Exception {
-//		String k = get(name);
-//		if (StringUtil.isEmpty(k))
-//			return 0;
-//		else
-//			return Integer.parseInt(k);
-//	}
+	public static int getInt(String name) throws Exception {
+		String k = get(name);
+		if (StringUtil.isEmpty(k))
+			return 0;
+		else
+			return Integer.parseInt(k);
+	}
 //
 //	public static long getLong(String name) throws Exception {
 //		String k = get(name);
@@ -157,11 +163,11 @@ public class Var {
 	public static HashMap<String, String> getServerVar() throws Exception {
 		HashMap<String, String> map = new HashMap<String, String>();
 		File file = new File(Main.path, "webbuilder/data/config.txt");
-//		JSONObject jsonObject = JsonUtil.readObject(file);
-//		String names[] = JSONObject.getNames(jsonObject);
-//		for (String n : names) {
-//			map.put(n, jsonObject.optString(n));
-//		}
+		JSONObject jsonObject = JsonUtil.readObject(file);
+		String names[] = JSONObject.getNames(jsonObject);
+		for (String n : names) {
+			map.put(n, jsonObject.optString(n));
+		}
 		return map;
 	}
 

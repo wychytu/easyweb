@@ -19,11 +19,11 @@ import javax.servlet.http.HttpServletResponse;
 //import com.webbuilder.common.Var;
 //import com.webbuilder.tool.Encrypter;
 //import com.webbuilder.utils.DbUtil;
-//import com.webbuilder.utils.FileUtil;
+import com.easyweb.utils.FileUtil;
 //import com.webbuilder.utils.JsonUtil;
-//import com.webbuilder.utils.StringUtil;
+import com.easyweb.utils.StringUtil;
 //import com.webbuilder.utils.SysUtil;
-//import com.webbuilder.utils.WebUtil;
+import com.easyweb.utils.WebUtil;
 //import com.webbuilder.utils.ZipUtil;
 
 public class Install {
@@ -58,10 +58,10 @@ public class Install {
 
 	public static boolean checkInstall() {
 		try {
-			HashMap<String, String> map = Var.getServerVar();
-			String jndi = map.get("jndi");
+//			HashMap<String, String> map = Var.getServerVar();
+//			String jndi = map.get("jndi");
 //			if (StringUtil.isEmpty(jndi))
-//				return false;
+				return false;
 		} catch (Throwable e) {
 		}
 		return true;
@@ -69,8 +69,8 @@ public class Install {
 //
 	public static void setup(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-//		String xwl = request.getParameter("xwl");
-//		if (StringUtil.isEqual(xwl, "xwlfist")) {
+		String xwl = request.getParameter("xwl");
+		if (StringUtil.isEqual(xwl, "xwlfist")) {
 //			try {
 //				String jndi = request.getParameter("jndi"), dbType = request
 //						.getParameter("dbType");
@@ -82,9 +82,9 @@ public class Install {
 //				WebUtil.response(response, StringUtil.toHTML(SysUtil
 //						.getShortError(e)));
 //			}
-//		} else
-//			WebUtil.response(response, FileUtil.readUtfText(new File(Main.path,
-//					"webbuilder/data/setup.txt")));
+		} else
+			WebUtil.response(response, FileUtil.readUtfText(new File(Main.path,
+					"webbuilder/data/setup.txt")));
 	}
 
 //	public static void exportTables(HttpServletRequest request,

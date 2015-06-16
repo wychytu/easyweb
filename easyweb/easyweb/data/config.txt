@@ -1,0 +1,1 @@
+{"charset":"","serialNumber":"","startTask":true,"log":true,"cacheEnabled":true,"initMethod":"","printError":true,"finalMethod":"","cacheGzipMinSize":6144,"respGzipMinSize":10240,"serverId":"2","cacheCheckModified":true,"dbType":"sqlserver","jndi":"java:comp/env/jdbc/wb_demo","fileNameCharset":""}
